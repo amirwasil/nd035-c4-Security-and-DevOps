@@ -46,10 +46,19 @@ public class UserController {
 	public ResponseEntity<User> createUser(@RequestBody CreateUserRequest createUserRequest) {
 		boolean isAnyNullOrBlank = (ObjectUtils.anyNull(createUserRequest.getUsername(), createUserRequest.getPassword(), createUserRequest.getConfirmPassword())
 				|| StringUtils.isAnyBlank(createUserRequest.getUsername(), createUserRequest.getPassword(), createUserRequest.getConfirmPassword()));
+
+		if (isAnyNullOrBlank) {
+			return ResponseEntity.badRequest().build();
+		}
+
 		boolean isPasswordLengthFulfilled = createUserRequest.getPassword().length() >= 7;
 		boolean isPasswordEqualsConfirmPassword = createUserRequest.getPassword().equals(createUserRequest.getConfirmPassword());
 
-		if (isAnyNullOrBlank || !isPasswordLengthFulfilled || !isPasswordEqualsConfirmPassword) {
+		if (!isPasswordLengthFulfilled || !isPasswordEqualsConfirmPassword) {
+			return ResponseEntity.badRequest().build();
+		}
+
+		if (userRepository.findByUsername(createUserRequest.getUsername()) != null) {
 			return ResponseEntity.badRequest().build();
 		}
 
