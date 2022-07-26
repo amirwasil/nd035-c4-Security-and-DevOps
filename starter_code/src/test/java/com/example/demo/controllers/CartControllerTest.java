@@ -18,6 +18,7 @@ import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -85,11 +86,34 @@ public class CartControllerTest {
     }
 
     @Test
-    public void verify_addToCart_unhappyPath_itemNotFound() {
-        when(userRepository.findByUsername("testUser")).thenReturn(user);
-        when(itemRepository.findById(item.getId())).thenReturn(null);
+    public void verify_removeFromCat_unhappyPath_userNotFound() {
+        when(userRepository.findByUsername("testUser")).thenReturn(null);
         ModifyCartRequest modifyCartRequest = new ModifyCartRequest();
         ResponseEntity<Cart> response = cartController.removeFromcart(modifyCartRequest);
         assertEquals(404, response.getStatusCodeValue());
+    }
+
+    @Test
+    public void verify_addToCart_unhappyPath_itemNotFound() {
+        ModifyCartRequest modifyCartRequest = new ModifyCartRequest();
+        modifyCartRequest.setItemId(1);
+        modifyCartRequest.setUsername("testUser");
+        when(userRepository.findByUsername("testUser")).thenReturn(user);
+        when(itemRepository.findById(anyObject())).thenReturn(Optional.empty());
+        ResponseEntity<Cart> response = cartController.addTocart(modifyCartRequest);
+        assertEquals(404, response.getStatusCodeValue());
+
+    }
+
+    @Test
+    public void verify_removeFromCat_unhappyPath_itemNotFound() {
+        ModifyCartRequest modifyCartRequest = new ModifyCartRequest();
+        modifyCartRequest.setItemId(1);
+        modifyCartRequest.setUsername("testUser");
+        when(userRepository.findByUsername("testUser")).thenReturn(user);
+        when(itemRepository.findById(anyObject())).thenReturn(Optional.empty());
+        ResponseEntity<Cart> response = cartController.removeFromcart(modifyCartRequest);
+        assertEquals(404, response.getStatusCodeValue());
+
     }
 }

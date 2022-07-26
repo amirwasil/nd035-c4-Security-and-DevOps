@@ -12,11 +12,11 @@ import org.junit.Test;
 import org.springframework.http.ResponseEntity;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.anyObject;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -27,6 +27,7 @@ public class OrderControllerTest {
     private OrderRepository orderRepository = mock(OrderRepository.class);
     private Cart cart;
     private User user;
+    private UserOrder order;
 
 
     @Before
@@ -43,11 +44,14 @@ public class OrderControllerTest {
         cart.addItem(item);
         user = new User();
         user.setCart(cart);
+        order = new UserOrder();
+        order.setId(1L);
     }
 
     @Test
     public void verify_submitOrder_happyPath() {
         when(userRepository.findByUsername("testUser")).thenReturn(user);
+        when(orderRepository.save(anyObject())).thenReturn(order);
         ResponseEntity<UserOrder> response = orderController.submit("testUser");
         assertEquals(200, response.getStatusCodeValue());
     }
@@ -70,7 +74,7 @@ public class OrderControllerTest {
     @Test
     public void verify_getOrderForUser_unhappyPath_userNotFound() {
         when(userRepository.findByUsername("testUser")).thenReturn(null);
-        ResponseEntity<UserOrder> response = orderController.submit("testUser");
+        ResponseEntity<List<UserOrder>> response = orderController.getOrdersForUser("testUser");
         assertEquals(404, response.getStatusCodeValue());
     }
 }
