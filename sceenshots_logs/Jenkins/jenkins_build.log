@@ -1,0 +1,132 @@
+Started by user admin
+Running as SYSTEM
+Building in workspace C:\ProgramData\Jenkins\.jenkins\workspace\udacity-ecommerce-app-project
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+The recommended git tool is: NONE
+using credential c9c1ac61-7d3a-45d1-81ae-8f460cee8c29
+Cloning the remote Git repository
+Cloning repository https://github.com/amirwasil/nd035-c4-Security-and-DevOps.git
+ > git.exe init C:\ProgramData\Jenkins\.jenkins\workspace\udacity-ecommerce-app-project # timeout=10
+Fetching upstream changes from https://github.com/amirwasil/nd035-c4-Security-and-DevOps.git
+ > git.exe --version # timeout=10
+ > git --version # 'git version 2.34.0.windows.1'
+using GIT_SSH to set credentials 
+ > git.exe fetch --tags --force --progress -- https://github.com/amirwasil/nd035-c4-Security-and-DevOps.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git.exe config remote.origin.url https://github.com/amirwasil/nd035-c4-Security-and-DevOps.git # timeout=10
+ > git.exe config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git.exe rev-parse "refs/remotes/origin/master^{commit}" # timeout=10
+Checking out Revision bab9c4a67ce9fa72ee9739f3212f8b959634c6da (refs/remotes/origin/master)
+ > git.exe config core.sparsecheckout # timeout=10
+ > git.exe checkout -f bab9c4a67ce9fa72ee9739f3212f8b959634c6da # timeout=10
+Commit message: "Refactor test cases"
+ > git.exe rev-list --no-walk bab9c4a67ce9fa72ee9739f3212f8b959634c6da # timeout=10
+[udacity-ecommerce-app-project] $ cmd.exe /C "mvn -f starter_code/pom.xml clean compile package && exit %%ERRORLEVEL%%"
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< com.example:auth-course >-----------------------
+[INFO] Building auth-course 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ auth-course ---
+[INFO] Deleting C:\ProgramData\Jenkins\.jenkins\workspace\udacity-ecommerce-app-project\starter_code\target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ auth-course ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ auth-course ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 20 source files to C:\ProgramData\Jenkins\.jenkins\workspace\udacity-ecommerce-app-project\starter_code\target\classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ auth-course ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ auth-course ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 20 source files to C:\ProgramData\Jenkins\.jenkins\workspace\udacity-ecommerce-app-project\starter_code\target\classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ auth-course ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory C:\ProgramData\Jenkins\.jenkins\workspace\udacity-ecommerce-app-project\starter_code\src\test\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ auth-course ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 6 source files to C:\ProgramData\Jenkins\.jenkins\workspace\udacity-ecommerce-app-project\starter_code\target\test-classes
+[INFO] /C:/ProgramData/Jenkins/.jenkins/workspace/udacity-ecommerce-app-project/starter_code/src/test/java/com/example/demo/TestUtils.java: Some input files use or override a deprecated API.
+[INFO] /C:/ProgramData/Jenkins/.jenkins/workspace/udacity-ecommerce-app-project/starter_code/src/test/java/com/example/demo/TestUtils.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.22.2:test (default-test) @ auth-course ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.example.demo.controllers.CartControllerTest
+2022-07-26 15:32:26,449 INFO  c.e.demo.controllers.CartController - Add to Cart: FAILED; Reason: Item not found
+2022-07-26 15:32:26,470 INFO  c.e.demo.controllers.CartController - Remove from Cart: FAILED; Reason: Username not found
+2022-07-26 15:32:26,476 INFO  c.e.demo.controllers.CartController - Add to Cart: SUCCESS; Username: null; Item ID: 1; Quantity: 1
+2022-07-26 15:32:26,540 INFO  c.e.demo.controllers.CartController - Remove from Cart: FAILED; Reason: Item not found
+2022-07-26 15:32:26,541 INFO  c.e.demo.controllers.CartController - Add to Cart: FAILED; Reason: Username not found
+2022-07-26 15:32:26,543 INFO  c.e.demo.controllers.CartController - Remove from Cart: SUCCESS; Username: null; Item ID: 1; Quantity: 1
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.096 s - in com.example.demo.controllers.CartControllerTest
+[INFO] Running com.example.demo.controllers.ItemControllerTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in com.example.demo.controllers.ItemControllerTest
+[INFO] Running com.example.demo.controllers.OrderControllerTest
+2022-07-26 15:32:26,601 INFO  c.e.d.controllers.OrderController - Submit Order: SUCCESS; Username: testUser; Order ID: 1
+2022-07-26 15:32:26,603 INFO  c.e.d.controllers.OrderController - Submit Order: FAILED; Reason: Username not found
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in com.example.demo.controllers.OrderControllerTest
+[INFO] Running com.example.demo.controllers.UserControllerTest
+2022-07-26 15:32:26,638 INFO  c.e.demo.controllers.UserController - Create User: FAILED; Reason: Username already exists
+2022-07-26 15:32:26,638 INFO  c.e.demo.controllers.UserController - Create User: FAILED; Reason: Request contains null/blank fields
+2022-07-26 15:32:26,639 INFO  c.e.demo.controllers.UserController - Create User: SUCCESS; Username: testUser
+2022-07-26 15:32:26,640 INFO  c.e.demo.controllers.UserController - Create User: FAILED; Reason: Request contains null/blank fields
+2022-07-26 15:32:26,640 INFO  c.e.demo.controllers.UserController - Create User: FAILED; Reason: Password does not match or is less then 7 characters
+2022-07-26 15:32:26,641 INFO  c.e.demo.controllers.UserController - Create User: FAILED; Reason: Password does not match or is less then 7 characters
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.018 s - in com.example.demo.controllers.UserControllerTest
+[INFO] Running com.example.demo.SareetaApplicationTests
+2022-07-26 15:32:26,647 INFO  c.e.demo.controllers.UserController - Create User: FAILED; Reason: Username already exists
+2022-07-26 15:32:26,648 INFO  c.e.demo.controllers.UserController - Create User: FAILED; Reason: Request contains null/blank fields
+2022-07-26 15:32:26,649 INFO  c.e.demo.controllers.UserController - Create User: SUCCESS; Username: testUser
+2022-07-26 15:32:26,650 INFO  c.e.demo.controllers.UserController - Create User: FAILED; Reason: Request contains null/blank fields
+2022-07-26 15:32:26,651 INFO  c.e.demo.controllers.UserController - Create User: FAILED; Reason: Password does not match or is less then 7 characters
+2022-07-26 15:32:26,652 INFO  c.e.demo.controllers.UserController - Create User: FAILED; Reason: Password does not match or is less then 7 characters
+2022-07-26 15:32:26,655 INFO  c.e.demo.controllers.CartController - Add to Cart: FAILED; Reason: Item not found
+2022-07-26 15:32:26,655 INFO  c.e.demo.controllers.CartController - Remove from Cart: FAILED; Reason: Username not found
+2022-07-26 15:32:26,656 INFO  c.e.demo.controllers.CartController - Add to Cart: SUCCESS; Username: null; Item ID: 1; Quantity: 1
+2022-07-26 15:32:26,657 INFO  c.e.demo.controllers.CartController - Remove from Cart: FAILED; Reason: Item not found
+2022-07-26 15:32:26,658 INFO  c.e.demo.controllers.CartController - Add to Cart: FAILED; Reason: Username not found
+2022-07-26 15:32:26,659 INFO  c.e.demo.controllers.CartController - Remove from Cart: SUCCESS; Username: null; Item ID: 1; Quantity: 1
+2022-07-26 15:32:26,661 INFO  c.e.d.controllers.OrderController - Submit Order: SUCCESS; Username: testUser; Order ID: 1
+2022-07-26 15:32:26,663 INFO  c.e.d.controllers.OrderController - Submit Order: FAILED; Reason: Username not found
+[INFO] Tests run: 19, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 s - in com.example.demo.SareetaApplicationTests
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 38, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- maven-war-plugin:3.2.2:war (default-war) @ auth-course ---
+[INFO] Packaging webapp
+[INFO] Assembling webapp [auth-course] in [C:\ProgramData\Jenkins\.jenkins\workspace\udacity-ecommerce-app-project\starter_code\target\auth-course-0.0.1-SNAPSHOT]
+[INFO] Processing war project
+[INFO] Webapp assembled in [1105 msecs]
+[INFO] Building war: C:\ProgramData\Jenkins\.jenkins\workspace\udacity-ecommerce-app-project\starter_code\target\auth-course-0.0.1-SNAPSHOT.war
+[INFO] 
+[INFO] --- spring-boot-maven-plugin:2.1.5.RELEASE:repackage (repackage) @ auth-course ---
+[INFO] Replacing main artifact with repackaged archive
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  12.321 s
+[INFO] Finished at: 2022-07-26T15:32:31+08:00
+[INFO] ------------------------------------------------------------------------
+[DeployPublisher][INFO] Attempting to deploy 1 war file(s)
+[DeployPublisher][INFO] Deploying C:\ProgramData\Jenkins\.jenkins\workspace\udacity-ecommerce-app-project\starter_code\target\auth-course-0.0.1-SNAPSHOT.war to container Tomcat 9.x Remote with context eCommerce_app
+  [C:\ProgramData\Jenkins\.jenkins\workspace\udacity-ecommerce-app-project\starter_code\target\auth-course-0.0.1-SNAPSHOT.war] is not deployed. Doing a fresh deployment.
+  Deploying [C:\ProgramData\Jenkins\.jenkins\workspace\udacity-ecommerce-app-project\starter_code\target\auth-course-0.0.1-SNAPSHOT.war]
+Finished: SUCCESS
